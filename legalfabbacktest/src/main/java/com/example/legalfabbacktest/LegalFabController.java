@@ -38,10 +38,18 @@ public class LegalFabController {
         return Arrays.copyOfRange(parents, page, page + 2);
     }
 
+    @CrossOrigin(origins = "http://localhost:8100")
     @GetMapping("/children")
     public ArrayList<ChildJson> childJsons(@RequestParam(value = "pid", defaultValue = "0") String pidStr) {
         // http://localhost:8080/children?pid=0
         int pid = Integer.parseInt(pidStr);
         return pidToChildren.getOrDefault(pid, new ArrayList<>());
+    }
+
+    @CrossOrigin(origins = "http://localhost:8100")
+    @GetMapping("/page-count")
+    public int pageCount() {
+        // http://localhost:8080/page-count
+        return (parents.length + 1) / 2;
     }
 }
