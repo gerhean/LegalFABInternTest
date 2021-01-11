@@ -2,9 +2,7 @@ package com.example.legalfabbacktest;
 
 import java.util.*;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -16,15 +14,20 @@ public class LegalFabController {
 
     public LegalFabController() {
         this.parents = ReadJson.readParent();
+        Arrays.sort(this.parents);
+        HashMap<Integer, ParentJson> pidToParent = new HashMap<>();
         for (ParentJson parent: this.parents) {
+            pidToParent.put(parent.id, parent);
             pidToChildren.put(parent.id, new ArrayList<>());
         }
         ChildJson[] children = ReadJson.readChildren();
         for (ChildJson child: children) {
+            pidToParent.get(child.parentId).paidAmount += child.paidAmount;
             pidToChildren.get(child.parentId).add(child);
         }
     }
 
+    @CrossOrigin(origins = "http://localhost:8100")
     @GetMapping("/parent")
     public ParentJson[] parentJsons(@RequestParam(value = "page", defaultValue = "0") String pageStr) {
         // http://localhost:8080/parent?page=0

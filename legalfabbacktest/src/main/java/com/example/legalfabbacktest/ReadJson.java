@@ -13,7 +13,7 @@ public class ReadJson {
     public static ParentJson[] readParent() {
         try {
             String json = WriteJsonExample.readFile("/Parent.json");
-            System.out.println(json);
+            // System.out.println(json);
             Gson gson = new Gson();
             return gson.fromJson(json, ParentWrapper.class).data;
         } catch (IOException ioException) {
@@ -26,7 +26,7 @@ public class ReadJson {
     public static ChildJson[] readChildren() {
         try {
             String json = WriteJsonExample.readFile("/Child.json");
-            System.out.println(json);
+            // System.out.println(json);
             Gson gson = new Gson();
             return gson.fromJson(json, ChildWrapper.class).data;
         } catch (IOException ioException) {
