@@ -7,8 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class LegalFabController {
-
-
+    
     private HashMap<Integer, ArrayList<ChildJson>> pidToChildren = new HashMap<>();
     private ParentJson[] parents;
 

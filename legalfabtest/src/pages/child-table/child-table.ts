@@ -36,6 +36,9 @@ export class ChildTablePage {
     this.loadPage();
   }
 
+  /**
+   * Fetches children data from server
+   */
   async getChildren(pid: number) {
     try {
       const config = {
@@ -50,8 +53,10 @@ export class ChildTablePage {
     }
   }
 
+  /**
+   * Loads children data to display
+   */
   async loadPage() {
     this.children = await this.getChildren(this.parent.id);
-    console.dir(this.children);
   }
 }

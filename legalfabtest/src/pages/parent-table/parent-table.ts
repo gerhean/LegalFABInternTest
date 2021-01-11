@@ -35,6 +35,9 @@ export class ParentTablePage {
     this.loadPageCount().then(() => this.loadPage())
   }
 
+  /**
+   * Fetches pagecount from server to decide when to display navigation buttons
+   */
   async loadPageCount() {
     try {
       this.pageCount = (await axios.get<number>(PAGECOUNT_URL)).data;
@@ -43,6 +46,9 @@ export class ParentTablePage {
     }
   }
 
+  /**
+   * Returns a page of results the the form of an array of parent data.
+   */
   async getPage(pageNumber: number) {
     try {
       const config = {
