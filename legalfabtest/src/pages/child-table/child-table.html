@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>My First List</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="ion-margin">
+  <ion-grid class="ion-margin">
+    <ion-row>
+      <ion-col>ID</ion-col>
+      <ion-col>Sender</ion-col>
+      <ion-col>Reciever</ion-col>
+      <ion-col>Total Amount</ion-col>
+      <ion-col>Paid Amount</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let child of children; index as i">
+      <ion-col>{{ child.id }}</ion-col>
+      <ion-col>{{ parent.sender }}</ion-col>
+      <ion-col>{{ parent.receiver }}</ion-col>
+      <ion-col>{{ parent.totalAmount }}</ion-col>
+      <ion-col>{{ child.paidAmount }}</ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

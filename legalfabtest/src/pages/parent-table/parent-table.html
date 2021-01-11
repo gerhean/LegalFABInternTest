@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>My First List</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="ion-margin">
+  <ion-grid class="ion-margin parent-list">
+    <ion-row>
+      <ion-col>ID</ion-col>
+      <ion-col>Sender</ion-col>
+      <ion-col>Reciever</ion-col>
+      <ion-col>Total Amount</ion-col>
+      <ion-col>Paid Amount</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let parent of parents">
+      <ion-col>{{ parent.id }}</ion-col>
+      <ion-col>{{ parent.sender }}</ion-col>
+      <ion-col>{{ parent.receiver }}</ion-col>
+      <ion-col>{{ parent.totalAmount }}</ion-col>
+      <ion-col>
+        <button ion-item (click)="itemTapped($event, parent)">
+          {{ parent.paidAmount }}
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid class="button-list" *ngIf="pageNumber > 0 || pageNumber < pageCount - 1">
+  <ion-row>
+    <ion-col col-6>
+      <button ion-button full *ngIf="pageNumber > 0" (click)="loadPreviousPage()">
+        <ion-icon name="arrow-round-back"></ion-icon>
+      </button>
+    </ion-col>
+    <ion-col col-6>
+      <button ion-button full *ngIf="pageNumber < pageCount - 1" (click)="loadNextPage()">
+        <ion-icon name="arrow-round-forward"></ion-icon>
+      </button>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+</ion-content>
