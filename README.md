@@ -37,6 +37,9 @@ gradlew bootRun
 ## Running the frontend:
 
 Navigate to the frontend folder:
+```
+cd legalfabtest
+```
 
 ### Setup
 ```
